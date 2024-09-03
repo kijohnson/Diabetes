@@ -1,0 +1,32 @@
+---
+title: "Diabetes analysis"
+author: "Kim Johnson"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Install packages and open libraries
+```{r}
+pacman::p_load(haven, readr, dplyr, openxlsx)
+```
+
+```{r}
+diabetes <-
+ read_csv(
+   "https://raw.githubusercontent.com/kijohnson/Diabetes/main/DiabetesAtlasData.csv"
+   )
+```
+# Determine rows and columns
+```{r}
+dim(diabetes)
+names(diabetes)
+```
+# Sort the dataframe by rate in descending order
+```{r}
+sorted_data <- diabetes[order(-diabetes$`Diagnosed Diabetes-2021-Percentage`), ]
+```
+# Print sorted data
+```{r}
+print(sorted_data)
+```
+
